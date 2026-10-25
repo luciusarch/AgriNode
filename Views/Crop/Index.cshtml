@@ -1,0 +1,51 @@
+@model List<AgriNode.Models.CropModel>
+
+@{
+    ViewData["Title"] = "Mahsul Listesi";
+}
+
+<div class="container mt-4">
+    <h2>Mahsul İzleme Ekranı</h2>
+    
+    <!-- Sayfalar arası veri taşıma kontrolü (TempData ile) -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Mahsul Adı</th>
+                <th>Türü</th>
+                <th>Ekim Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                // Hocanın istediği dinamik veri listeleme döngüsü
+                foreach (var crop in Model)
+                {
+                    <tr>
+                        <td>@crop.Id</td>
+                        <td>@crop.Name</td>
+                        <td>@crop.Type</td>
+                        <td>@crop.PlantingDate.ToShortDateString()</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">Henüz mahsul eklenmedi.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <a href="/Crop/AddCrop" class="btn btn-primary">Yeni Mahsul Ekle</a>
+</div>
