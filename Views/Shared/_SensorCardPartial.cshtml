@@ -1,0 +1,27 @@
+@model AgriNode.Models.SensorModel
+
+<div class="card h-100 shadow-sm border-0">
+    <div class="card-header d-flex justify-content-between align-items-center @(Model.IsActive ? "bg-success text-white" : "bg-secondary text-white")">
+        <span class="fw-bold">@Model.SensorType</span>
+        @if (Model.IsActive)
+        {
+            <span class="badge bg-light text-success">Aktif</span>
+        }
+        else
+        {
+            <span class="badge bg-light text-secondary">Pasif</span>
+        }
+    </div>
+    <div class="card-body">
+        <h6 class="card-subtitle mb-3 text-muted">Konum: <strong>@Model.Location</strong></h6>
+        <div class="p-3 bg-light rounded text-center my-2">
+            <span class="text-muted d-block small">Son Ölçüm Değeri</span>
+            <span class="fs-3 fw-bold text-dark">@Model.LastValue</span>
+            <span class="fs-5 text-secondary">@Model.Unit</span>
+        </div>
+    </div>
+    <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center small text-muted">
+        <span>Durum: @(Model.IsActive ? "Çevrimiçi" : "Çevrimdışı")</span>
+        <a href="/Sensor/Calibration" class="text-decoration-none">Kalibre Et &rarr;</a>
+    </div>
+</div>
