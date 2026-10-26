@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "AgriNode Kontrol Paneli";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">AgriNode Akıllı Tarım Paneli</h2>
+            <p class="text-muted mb-0">Sera ve saha sensörlerinin anlık özet verileri</p>
+        </div>
+        <div>
+            <a href="/Dashboard/Alerts" class="btn btn-outline-danger me-2">Sistem Uyarıları</a>
+            <a href="/Sensor/Index" class="btn btn-success">Sensörleri Yönet</a>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card text-white bg-success h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Aktif Sensör Sayısı</h6>
+                    <h2 class="display-6 fw-bold mb-0">@ViewBag.TotalActiveSensors</h2>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 small">
+                    Sahada çalışan toplam cihaz
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card text-white bg-danger h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Ortalama Sıcaklık</h6>
+                    <h2 class="display-6 fw-bold mb-0">@ViewBag.AverageTemperature</h2>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 small">
+                    Sera içi anlık ortalama
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card text-white bg-info h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Ortalama Nem</h6>
+                    <h2 class="display-6 fw-bold mb-0">@ViewBag.AverageHumidity</h2>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 small">
+                    Toprak ve ortam nem ortalaması
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card text-white bg-primary h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Su Tankı Seviyesi</h6>
+                    <h2 class="display-6 fw-bold mb-0">@ViewBag.WaterTankLevel</h2>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 small">
+                    Ana sulama deposu doluluk oranı
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @await Component.InvokeAsync("ActiveAlerts")
+</div>

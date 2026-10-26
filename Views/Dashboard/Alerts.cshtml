@@ -1,0 +1,39 @@
+@model List<string>
+
+@{
+    ViewData["Title"] = "Sistem Uyarıları";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Sistem Uyarı ve Bildirim Kayıtları</h2>
+            <p class="text-muted mb-0">Sensörlerden gelen kritik eşik bildirimleri</p>
+        </div>
+        <a href="/Dashboard/Index" class="btn btn-outline-secondary">&larr; Panele Dön</a>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white fw-bold">
+                Toplam @Model.Count Aktif Uyarı
+            </div>
+            <div class="list-group list-group-flush">
+                @foreach (var alert in Model)
+                {
+                    <div class="list-group-item list-group-item-action d-flex align-items-center py-3">
+                        <span class="badge bg-danger rounded-pill me-3">Uyarı</span>
+                        <span class="fs-6">@alert</span>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success shadow-sm">
+            Sistemde kayıtlı herhangi bir uyarı bulunmamaktadır.
+        </div>
+    }
+</div>

@@ -1,0 +1,31 @@
+@model List<string>
+
+<div class="card border-warning shadow-sm mt-4">
+    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold">Aktif Sistem Uyarıları (ViewComponent)</h5>
+        <span class="badge bg-dark">@(Model?.Count ?? 0) Uyarı</span>
+    </div>
+    <div class="card-body">
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="list-group list-group-flush">
+                @foreach (var alert in Model)
+                {
+                    <div class="list-group-item d-flex align-items-center py-3">
+                        <span class="badge bg-danger me-3">!</span>
+                        <span class="text-dark">@alert</span>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success mb-0">
+                Şu anda aktif bir sistem uyarısı bulunmamaktadır.
+            </div>
+        }
+    </div>
+    <div class="card-footer bg-light text-end">
+        <a href="/Dashboard/Alerts" class="btn btn-sm btn-outline-dark">Tüm Uyarıları Gör</a>
+    </div>
+</div>
