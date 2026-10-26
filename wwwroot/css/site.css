@@ -1,31 +1,141 @@
-html {
-  font-size: 14px;
+/* --- AgriNode Kurumsal Renk Paleti & Değişkenler --- */
+:root {
+  --agri-green-primary: #2d6a4f;
+  --agri-green-dark: #1b4332;
+  --agri-green-light: #52b788;
+  --agri-accent: #d8f3dc;
+  --agri-earth: #6c584c;
+  --agri-bg: #f8f9fa;
+  --agri-card-bg: #ffffff;
+  --agri-text: #212529;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* --- Genel Sayfa Ayarları --- */
+body {
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--agri-bg);
+  color: var(--agri-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+main {
+  flex: 1;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* --- Navigation Bar Tasarımı --- */
+.navbar-agri {
+  background-color: var(--agri-green-dark) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
 }
+
+.navbar-agri .navbar-brand {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar-agri .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  padding: 0.5rem 0.9rem !important;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.navbar-agri .nav-link:hover,
+.navbar-agri .nav-link.active {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.navbar-agri .nav-link i {
+  margin-right: 6px;
+  color: var(--agri-green-light);
+}
+
+/* --- Kart (Card) Tasarımları & Hover Efektleri --- */
+.card {
+  border: none !important;
+  border-radius: 12px !important;
+  background-color: var(--agri-card-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(45, 106, 79, 0.15) !important;
+}
+
+/* --- Tablo ve Form Stilleri --- */
+.table-responsive {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: var(--agri-green-primary);
+  color: #ffffff;
+}
+
+.table thead th {
+  border: none;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.form-control, .form-select {
+  border-radius: 8px !important;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #ced4da;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--agri-green-light);
+  box-shadow: 0 0 0 0.25rem rgba(82, 183, 136, 0.25);
+}
+
+/* --- Buton Stilleri --- */
+.btn-agri-primary {
+  background-color: var(--agri-green-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.btn-agri-primary:hover {
+  background-color: var(--agri-green-dark);
+  color: white;
+  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+}
+
+/* --- Footer --- */
+footer.footer-agri {
+  background-color: #ffffff;
+  border-top: 1px solid #e9ecef;
+  color: #6c757d;
+  padding: 1.2rem 0;
+  margin-top: auto;
+}
+
+
 
 body {
-  margin-bottom: 60px;
+    background-color: #99d96f; /* Çok hafif, doğadan ilham alan açık bir ton */
+    font-family: 'Poppins', sans-serif;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
-}
+

@@ -1,38 +1,40 @@
-@model AgriNode.Models.CropModel
-
 @{
     ViewData["Title"] = "Yeni Mahsul Ekle";
 }
 
-<div class="container mt-4">
-    <h2>Yeni Mahsul Ekle</h2>
-    <hr />
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <div class="text-center mb-4">
+                    <div class="text-success fs-1 mb-2">
+                        <i class="bi bi-plus-circle-fill"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark">Yeni Mahsul Ekle</h3>
+                    <p class="text-muted">Sisteme yeni bir ekim alanı ve mahsul tanımlayın.</p>
+                </div>
 
-    <!-- Hocanın istediği HtmlHelper Formu -->
-    @using (Html.BeginForm("AddCrop", "Crop", FormMethod.Post))
-    {
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Name, new { @class = "form-label fw-bold" })
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Örn: Domates (Sera 1)" })
-            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                <!-- Orijinal Razor/HTML Form Yapısı Bozulmadan Giydirildi -->
+                <form asp-action="AddCrop" method="post">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Mahsul Adı</label>
+                        <input type="text" class="form-control" placeholder="Örn: Domates, Salatalık..." />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Ekim Tarihi</label>
+                        <input type="date" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Konum / Sera</label>
+                        <input type="text" class="form-control" placeholder="Örn: Sera A-1" />
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-agri-primary py-2">
+                            <i class="bi bi-check-lg me-1"></i> Mahsulü Kaydet
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Type, new { @class = "form-label fw-bold" })
-            @Html.DropDownListFor(m => m.Type, new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Sebze", Value = "Sebze" },
-                new SelectListItem { Text = "Meyve", Value = "Meyve" },
-                new SelectListItem { Text = "Tahıl", Value = "Tahıl" }
-            }, "Mahsul Türü Seçiniz", new { @class = "form-select" })
-            @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(m => m.PlantingDate, new { @class = "form-label fw-bold" })
-            @Html.EditorFor(m => m.PlantingDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-        </div>
-
-        <button type="submit" class="btn btn-success">Mahsulü Sisteme Kaydet</button>
-    }
+    </div>
 </div>

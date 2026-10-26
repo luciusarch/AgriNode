@@ -1,68 +1,41 @@
-@model AgriNode.Models.SensorModel
-
 @{
-    ViewData["Title"] = "Yeni Sensör Ekle / Kalibre Et";
-
-    var sensorTypes = new List<SelectListItem>
-    {
-        new SelectListItem { Text = "Sıcaklık Sensörü", Value = "Sıcaklık" },
-        new SelectListItem { Text = "Toprak Nem Sensörü", Value = "Nem" },
-        new SelectListItem { Text = "pH Sensörü", Value = "pH" },
-        new SelectListItem { Text = "Su Seviyesi Sensörü", Value = "Su Seviyesi" },
-        new SelectListItem { Text = "Işık Şiddeti Sensörü", Value = "Işık" }
-    };
-
-    var unitList = new List<SelectListItem>
-    {
-        new SelectListItem { Text = "°C (Derece)", Value = "°C" },
-        new SelectListItem { Text = "% (Yüzde)", Value = "%" },
-        new SelectListItem { Text = "pH", Value = "pH" },
-        new SelectListItem { Text = "Lux", Value = "Lux" },
-        new SelectListItem { Text = "Litre (L)", Value = "L" }
-    };
+    ViewData["Title"] = "Sensör Kalibrasyonu";
 }
 
-<div class="container py-4">
+<div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-success text-white py-3">
-                    <h4 class="mb-0 fw-bold">Yeni Sensör Ekle / Kalibre Et</h4>
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <div class="text-center mb-4">
+                    <div class="text-success fs-1 mb-2">
+                        <i class="bi bi-sliders"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark">Sensör Kalibrasyon Paneli</h3>
+                    <p class="text-muted">Seçilen sensörün eşik değerlerini ve kalibrasyon ayarlarını güncelleyin.</p>
                 </div>
-                <div class="card-body p-4">
-                    @using (Html.BeginForm())
-                    {
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Sensör Konumu (Location)</label>
-                            @Html.TextBoxFor(m => m.Location, new { @class = "form-control", placeholder = "Örn: Sera-1 Kuzey Bölgesi", required = "required" })
-                        </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Sensör Tipi (SensorType)</label>
-                            @Html.DropDownListFor(m => m.SensorType, sensorTypes, "-- Sensör Tipi Seçiniz --", new { @class = "form-select", required = "required" })
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Son Ölçüm Değeri (LastValue)</label>
-                            @Html.TextBoxFor(m => m.LastValue, new { @class = "form-control", type = "number", step = "any", placeholder = "Örn: 24.5", required = "required" })
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Ölçüm Birimi (Unit)</label>
-                            @Html.DropDownListFor(m => m.Unit, unitList, "-- Birim Seçiniz --", new { @class = "form-select", required = "required" })
-                        </div>
-
-                        <div class="form-check mb-4">
-                            @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-check-input" })
-                            <label class="form-check-label fw-semibold">Sensör Aktif Mi? (IsActive)</label>
-                        </div>
-
-                        <div class="d-flex justify-content-between">
-                            <a href="/Sensor/Index" class="btn btn-outline-secondary">İptal / Geri Dön</a>
-                            <button type="submit" class="btn btn-success px-4">Sensörü Kaydet</button>
-                        </div>
-                    }
-                </div>
+                <form asp-action="Calibration" method="post">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Sensör Seçimi</label>
+                        <select class="form-select">
+                            <option>SNS-001 - Sıcaklık Sensörü</option>
+                            <option>SNS-002 - Toprak Nem Sensörü</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Kalibrasyon Değeri / Çarpanı</label>
+                        <input type="number" step="0.1" class="form-control" placeholder="Örn: 1.0" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Açıklama / Not</label>
+                        <textarea class="form-control" rows="3" placeholder="Kalibrasyon nedenini yazın..."></textarea>
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-agri-primary py-2">
+                            <i class="bi bi-check-lg me-1"></i> Kalibrasyonu Uygula
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
