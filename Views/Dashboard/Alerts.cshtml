@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Sistem Uyarıları";
+}
+
+<div class="container py-4">
+    <div class="mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-bell-fill text-danger me-2"></i>Sistem Uyarıları</h2>
+        <p class="text-muted mb-0">Sensörlerden gelen kritik uyarılar ve bildirim geçmişi.</p>
+    </div>
+
+    <div class="card shadow-sm p-4">
+        <div class="table-responsive">
+            <table class="table align-middle table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sensör / Bölge</th>
+                        <th>Uyarı Tipi</th>
+                        <th>Açıklama</th>
+                        <th>Zaman</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="fw-bold">1</td>
+                        <td><i class="bi bi-cpu text-success me-1"></i> Sera Kuzey - Nem</td>
+                        <td><span class="badge bg-warning text-dark">Düşük Nem</span></td>
+                        <td>Toprak nemi %30'un altına düştü.</td>
+                        <td class="text-muted small">10 dakika önce</td>
+                        <td><span class="badge bg-success">Çözüldü</span></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">2</td>
+                        <td><i class="bi bi-cpu text-success me-1"></i> Sera Güney - Sıcaklık</td>
+                        <td><span class="badge bg-danger">Yüksek Sıcaklık</span></td>
+                        <td>Sıcaklık 35°C sınırını aştı.</td>
+                        <td class="text-muted small">1 saat önce</td>
+                        <td><span class="badge bg-danger">Beklemede</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

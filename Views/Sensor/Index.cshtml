@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Sensör Yönetimi";
+}
+
+<div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h2 class="fw-bold text-dark"><i class="bi bi-cpu-fill text-success me-2"></i>Sensör Yönetimi</h2>
+            <p class="text-muted mb-0">Aktif IoT sensörleri ve anlık durumları.</p>
+        </div>
+        <a asp-action="Calibration" class="btn btn-agri-primary shadow-sm">
+            <i class="bi bi-sliders me-1"></i> Sensör Kalibrasyonu
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card card-hover p-4 h-100">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="fs-2 text-success me-3"><i class="bi bi-thermometer-half"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-0">Sıcaklık Sensörü</h5>
+                        <small class="text-muted">ID: SNS-001</small>
+                    </div>
+                </div>
+                <hr>
+                <p class="mb-1"><strong>Ölçüm:</strong> 24.5 °C</p>
+                <p class="mb-3"><strong>Durum:</strong> <span class="badge bg-success">Aktif</span></p>
+                <a asp-action="Calibration" class="btn btn-outline-success btn-sm mt-auto">Kalibre Et</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-hover p-4 h-100">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="fs-2 text-info me-3"><i class="bi bi-droplet-fill"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-0">Toprak Nem Sensörü</h5>
+                        <small class="text-muted">ID: SNS-002</small>
+                    </div>
+                </div>
+                <hr>
+                <p class="mb-1"><strong>Ölçüm:</strong> %68 Nem</p>
+                <p class="mb-3"><strong>Durum:</strong> <span class="badge bg-success">Aktif</span></p>
+                <a asp-action="Calibration" class="btn btn-outline-success btn-sm mt-auto">Kalibre Et</a>
+            </div>
+        </div>
+    </div>
+</div>
